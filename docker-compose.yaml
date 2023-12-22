@@ -1,0 +1,33 @@
+version: "3"
+services:
+  website:
+    image: nginx
+    ports:
+      - "80:80"
+    restart: always
+    volumes:
+      - ./client:/usr/share/nginx/html
+      - ./mime.types:/etc/nginx/mime.types
+
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - ./mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: projekt
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    depends_on:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=root123
