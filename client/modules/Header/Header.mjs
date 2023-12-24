@@ -2,63 +2,60 @@ import Link from '../Link/Link.mjs';
 import Img from '../Img/Img.mjs';
 
 export class Header {
+    headerElement = document.createElement('header');
 
-	constructor(ref) {
-		this.ref = ref;
-		this.headerElement = document.createElement('header');
-	}
+    constructor(className = 'Header') {
+        this.className = className;
+    }
 
-	addClassNames(className = 'Header') {
-		const { headerElement } = this
+    addHtmlContent(content = '<div><p>header</p></div>') {
+        const { headerElement } = this;
 
-		headerElement.className = className;
-	}
+        headerElement.innerHTML = content;
 
-	addHtmlContent(content = '<div><p>header</p></div>') {
-		const { headerElement } = this
+        return headerElement;
+    }
 
-		headerElement.innerHTML = content;
-	}
+    addElementContent(element = document.createElement('div')) {
+        const { headerElement } = this;
 
-	addElementContent(element = document.createElement('div')) {
-		const { headerElement } = this
+        headerElement.appendChild(element);
 
-		console.log('test-4', element);
-		headerElement.appendChild(element);
-	}
+        return headerElement;
+    }
 
-	appendHeaderChild(data) {
-		const { headerElement } = this
+    appendHeaderChild(data) {
+        const { headerElement } = this;
 
-		headerElement.appendChild(data);
+        headerElement.appendChild(data);
 
-		return this;
-	}
+        return headerElement;
+    }
 
-	render() {
-		const { ref, headerElement } = this;
-		const headerWrapper = document.createElement('div');
-		const linkWrapper = document.createElement('div');
+    render() {
+        const { headerElement, className } = this;
+        const headerWrapper = document.createElement('div');
+        const linkWrapper = document.createElement('div');
 
-		headerWrapper.className = 'Header Wrapper';
-		headerWrapper.innerHTML = '<p id="a1">Zaliczenie</p>';
+        headerElement.className = className;
 
-		const img1 = new Img('../../Assets/logo.png', 'sliczne logo');
+        headerWrapper.className = 'Header Wrapper';
+        headerWrapper.innerHTML = '<p id="a1">PureBlog</p>';
 
-		headerWrapper.appendChild(img1.render());
+        const img1 = new Img('../../assets/logo.png', 'sliczne logo');
 
-		new Link('page 1', 'Link', '#a1', linkWrapper).render();
-		new Link('page 2', 'Link', '#a2', linkWrapper).render();
-		new Link('page 3', 'Link', '#a3', linkWrapper).render();
+        headerWrapper.appendChild(img1.render());
 
-		headerWrapper.appendChild(linkWrapper);
+        linkWrapper.appendChild(new Link('page 1', 'Link', '#a1').render());
+        linkWrapper.appendChild(new Link('page 2', 'Link', '#a2').render());
+        linkWrapper.appendChild(new Link('page 3', 'Link', '#a3').render());
 
-		this.appendHeaderChild(headerWrapper);
+        headerWrapper.appendChild(linkWrapper);
 
-		const render = ref.children[0].replaceWith(headerElement);
+        this.appendHeaderChild(headerWrapper);
 
-		return render;
-	}
+        return headerElement;
+    }
 }
 
-export default Header
+export default Header;

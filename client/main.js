@@ -4,11 +4,8 @@ import MainContent from './modules/MainContent/MainContent.mjs';
 const bodyRef = document.querySelector('body');
 
 /** Class instace declaration*/
-const h1 = new Header(bodyRef);
-const b1 = new MainContent(bodyRef);
+const h1 = new Header('Header');
+const mc1 = new MainContent();
 
-h1.addClassNames('Header');
-h1.render();
-
-b1.render();
-
+bodyRef.children[0].replaceWith(h1.render());
+bodyRef.children[1].replaceWith(mc1.render());
