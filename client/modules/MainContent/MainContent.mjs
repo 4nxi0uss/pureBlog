@@ -1,23 +1,19 @@
+import List from '../List/List.mjs';
+
 export class MainContent {
-    constructor(ref) {
-        this.parentRef = ref;
+    constructor() {
         this.mainContentElement = document.createElement('div');
     }
 
     render() {
-        const {
-            parentRef,
-            mainContentElement
-        } = this;
+        const { mainContentElement } = this;
 
-        mainContentElement.innerText = 'test classy body';
         mainContentElement.className = 'MainContent';
 
-        const render = parentRef.children[1].replaceWith(mainContentElement);
+        new List(mainContentElement, 'List List--Wrapper').render();
 
-        return render;
+        return mainContentElement;
     }
 }
 
 export default MainContent;
-
