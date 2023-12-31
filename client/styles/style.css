@@ -49,6 +49,11 @@ body {
         width: auto;
     }
 
+    .Header-Logo {
+        width: 30px;
+        height: 30px;
+    }
+
     .Header-Navigation {
         position: relative;
         display: flex;
@@ -92,6 +97,8 @@ body {
                 position: relative;
                 left: 50%;
                 transform: translateX(-50%);
+                width: 200px;
+                height: 200px;
             }
 
             .ListElement--Description {
