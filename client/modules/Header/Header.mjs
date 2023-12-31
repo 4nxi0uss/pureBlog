@@ -1,60 +1,52 @@
 import Link from '../Link/Link.mjs';
 import Img from '../Img/Img.mjs';
+import RenderElement from '../RenderElement/RenderElement.mjs';
 
-export class Header {
-    headerElement = document.createElement('header');
+export class Header extends RenderElement {
+    headerWrapper = document.createElement('div');
+    logoWrapper = document.createElement('div');
+    titleEle = document.createElement('p');
+    linkWrapper = document.createElement('nav');
 
     constructor(className = 'Header') {
+        super('header');
         this.className = className;
     }
 
-    addHtmlContent(content = '<div><p>header</p></div>') {
-        const { headerElement } = this;
-
-        headerElement.innerHTML = content;
-
-        return headerElement;
-    }
-
-    addElementContent(element = document.createElement('div')) {
-        const { headerElement } = this;
-
-        headerElement.appendChild(element);
-
-        return headerElement;
-    }
-
-    appendHeaderChild(data) {
-        const { headerElement } = this;
-
-        headerElement.appendChild(data);
-
-        return headerElement;
-    }
-
     render() {
-        const { headerElement, className } = this;
-        const headerWrapper = document.createElement('div');
-        const linkWrapper = document.createElement('div');
+        const {
+            mainRenderElement,
+            className,
+            headerWrapper,
+            linkWrapper,
+            titleEle,
+            logoWrapper,
+        } = this;
+        logoWrapper.className = 'Header-LogoWrapper';
 
-        headerElement.className = className;
+        titleEle.className = 'Header-Title';
+        titleEle.textContent = 'PureBlog';
 
-        headerWrapper.className = 'Header Wrapper';
-        headerWrapper.innerHTML = '<p id="a1">PureBlog</p>';
+        mainRenderElement.className = className;
+
+        headerWrapper.className = 'Header-Wrapper';
+        logoWrapper.appendChild(titleEle);
 
         const img1 = new Img('../../assets/logo.png', 'sliczne logo');
 
-        headerWrapper.appendChild(img1.render());
+        logoWrapper.appendChild(img1.render());
+        headerWrapper.appendChild(logoWrapper);
 
-        linkWrapper.appendChild(new Link('page 1', 'Link', '#a1').render());
-        linkWrapper.appendChild(new Link('page 2', 'Link', '#a2').render());
-        linkWrapper.appendChild(new Link('page 3', 'Link', '#a3').render());
+        linkWrapper.className = 'Header-Navigation';
+        linkWrapper.appendChild(new Link('Home', 'Link', '/').render());
+        linkWrapper.appendChild(new Link('About', 'Link', '/about').render());
+        linkWrapper.appendChild(new Link('Log In', 'Link', '/login').render());
 
         headerWrapper.appendChild(linkWrapper);
 
-        this.appendHeaderChild(headerWrapper);
+        this.appendRenderChild(headerWrapper);
 
-        return headerElement;
+        return mainRenderElement;
     }
 }
 

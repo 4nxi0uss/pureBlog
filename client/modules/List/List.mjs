@@ -1,18 +1,18 @@
 import ListElement from '../ListElement/ListElement.mjs';
 import { TEST_DESCRIPTION, TEST_IMG } from './List.config.mjs';
+import RenderElement from '../RenderElement/RenderElement.mjs';
 
-export class List {
-    listEle = document.createElement('div');
-
+export class List extends RenderElement {
     constructor(ref, className = 'List') {
+        super('div');
         this.parent = ref;
         this.className = className;
     }
 
     render() {
-        const { listEle, parent, className } = this;
+        const { mainRenderElement, parent, className } = this;
 
-        listEle.className = className;
+        mainRenderElement.className = className;
 
         const l1 = new ListElement('ListElement 1', TEST_IMG, TEST_DESCRIPTION)
             .setDescriptionFieldClass('ListElement--Description')
@@ -24,12 +24,12 @@ export class List {
             .setDescriptionFieldClass('ListElement--Description')
             .render();
 
-        listEle.appendChild(l1);
-        listEle.appendChild(l2);
-        listEle.appendChild(l3);
-        parent.appendChild(listEle);
+        mainRenderElement.appendChild(l1);
+        mainRenderElement.appendChild(l2);
+        mainRenderElement.appendChild(l3);
+        parent.appendChild(mainRenderElement);
 
-        return listEle;
+        return mainRenderElement;
     }
 }
 

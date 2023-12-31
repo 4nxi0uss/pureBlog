@@ -17,18 +17,53 @@ body {
     z-index: 0;
 }
 
+.Button {
+    background: transparent;
+    padding: 5px;
+    border: none;
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
 .Header {
     border-block-end: 1px solid red;
     box-shadow: 0px 1px 20px 0px #00000017;
     max-width: 100vw;
     height: 50px;
 
-    & .Wrapper {
+    .Header-Wrapper {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
         flex-wrap: nowrap;
+        width: inherit;
+        height: inherit;
+    }
+
+    .Header-LogoWrapper {
+        align-items: center;
+        position: relative;
+        display: flex;
+        width: auto;
+    }
+
+    .Header-Navigation {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        width: auto;
+
+        & .Link {
+            color: black;
+            text-decoration: none;
+            margin-inline: 5px;
+
+            &:hover {
+                color: red;
+            }
+        }
     }
 }
 
@@ -63,12 +98,35 @@ body {
                 margin: 10px;
                 font-size: 14px;
                 line-height: 16px;
+            }
+
+            .ListElement--Description__hidden {
                 display: -webkit-box;
                 -webkit-line-clamp: 3;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
                 white-space: pre-wrap;
             }
+
+            .ListElement--DescriptionButton {
+                color: blue;
+                left: 50%;
+                transform: translateX(-50%);
+                margin: 5px 0px;
+                font-size: 14px;
+                line-height: 16px;
+                font-weight: 500;
+
+                &:hover {
+                    background: blue;
+                    color: white;
+                }
+            }
         }
     }
+}
+
+.Footer {
+    height: 100px;
+    background-color: tan;
 }
