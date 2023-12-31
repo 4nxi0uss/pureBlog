@@ -3,14 +3,14 @@ import { TEST_DESCRIPTION, TEST_IMG } from './List.config.mjs';
 import RenderElement from '../RenderElement/RenderElement.mjs';
 
 export class List extends RenderElement {
-    constructor(ref, className = 'List') {
+    test = document.createElement('div');
+    constructor(className = 'List') {
         super('div');
-        this.parent = ref;
         this.className = className;
     }
 
     render() {
-        const { mainRenderElement, parent, className } = this;
+        const { mainRenderElement, className } = this;
 
         mainRenderElement.className = className;
 
@@ -27,7 +27,6 @@ export class List extends RenderElement {
         mainRenderElement.appendChild(l1);
         mainRenderElement.appendChild(l2);
         mainRenderElement.appendChild(l3);
-        parent.appendChild(mainRenderElement);
 
         return mainRenderElement;
     }
