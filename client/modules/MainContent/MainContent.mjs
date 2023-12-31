@@ -1,5 +1,4 @@
 import RenderElement from '../RenderElement/RenderElement.mjs';
-import List from '../List/List.mjs';
 
 export class MainContent extends RenderElement {
     constructor() {
@@ -10,8 +9,6 @@ export class MainContent extends RenderElement {
         const { mainRenderElement } = this;
 
         mainRenderElement.className = 'MainContent';
-
-        new List(mainRenderElement, 'List List--Wrapper').render();
 
         return mainRenderElement;
     }

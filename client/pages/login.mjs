@@ -1,5 +1,6 @@
 import Footer from '../modules/Footer/Footer.mjs';
 import Header from '../modules/Header/Header.mjs';
+import MainContent from '../modules/MainContent/MainContent.mjs';
 
 class Login {
     bodyRef = document.createElement('div');
@@ -17,9 +18,13 @@ class Login {
         bodyRef.innerHTML = '';
 
         const header = new Header('Header');
+        const main = new MainContent();
         const footer = new Footer('Footer', 'footer for login');
 
+        main.addHtmlContent('<p>login</p>');
+
         bodyRef.appendChild(header.render());
+        bodyRef.appendChild(main.render());
         bodyRef.appendChild(footer.render());
 
         return bodyRef;
