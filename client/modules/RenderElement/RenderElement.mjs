@@ -3,6 +3,11 @@ export class RenderElement {
         this.mainRenderElement = document.createElement(selector);
     }
 
+    /**
+     * @method
+     * @param {string} [content='<div><p>render element</p></div>']
+     * @returns {HTMLElement}
+     */
     addHtmlContent(content = '<div><p>render element</p></div>') {
         const { mainRenderElement } = this;
 
@@ -11,6 +16,11 @@ export class RenderElement {
         return mainRenderElement;
     }
 
+    /**
+     * @method
+     * @param {HTMLElement} [element=document.createElement('div')]
+     * @returns {HTMLElement}
+     */
     addElementContent(element = document.createElement('div')) {
         const { mainRenderElement } = this;
 
@@ -19,6 +29,11 @@ export class RenderElement {
         return mainRenderElement;
     }
 
+    /**
+     * @method
+     * @param {HTMLElement} data
+     * @returns {HTMLElement}
+     */
     appendRenderChild(data) {
         const { mainRenderElement } = this;
 
@@ -27,6 +42,10 @@ export class RenderElement {
         return mainRenderElement;
     }
 
+    /**
+     * @method
+     * @returns {HTMLElement}
+     */
     render() {
         const { mainRenderElement } = this;
 
