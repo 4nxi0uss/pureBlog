@@ -1,20 +1,23 @@
-export class Link {
-    linkElement = document.createElement('a');
+import RenderElement from '../RenderElement/RenderElement.mjs';
+import RouterObj from '../Router/Router.mjs';
 
+export class Link extends RenderElement {
     constructor(name, className = 'Link', linkRef) {
+        super('a');
         this.name = name;
         this.className = className;
         this.linkRef = linkRef;
     }
 
     render() {
-        const { linkElement, className, name, linkRef } = this;
+        const { mainRenderElement, className, name, linkRef } = this;
 
-        linkElement.className = className;
-        linkElement.innerText = name;
-        linkElement.href = linkRef;
+        mainRenderElement.className = className;
+        mainRenderElement.innerText = name;
+        mainRenderElement.href = linkRef;
+        mainRenderElement.onclick = RouterObj.routerClickBind;
 
-        return linkElement;
+        return mainRenderElement;
     }
 }
 
