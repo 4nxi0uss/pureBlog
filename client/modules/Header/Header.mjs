@@ -32,7 +32,11 @@ export class Header extends RenderElement {
         headerWrapper.className = 'Header-Wrapper';
         logoWrapper.appendChild(titleEle);
 
-        const img1 = new Img('../../assets/logo.png', 'sliczne logo');
+        const img1 = new Img(
+            '../../assets/logo.png',
+            'sliczne logo',
+            'Img Header-Logo'
+        );
 
         logoWrapper.appendChild(img1.render());
         headerWrapper.appendChild(logoWrapper);
