@@ -1,20 +1,21 @@
-export class Img {
-    imgElem = document.createElement('img');
+import RenderElement from '../RenderElement/RenderElement.mjs';
 
+export class Img extends RenderElement {
     constructor(imgPath, altText = '', className = 'Img') {
+        super('img');
         this.imgPath = imgPath;
         this.altText = altText;
         this.className = className;
     }
 
     render() {
-        const { imgPath, imgElem, altText, className } = this;
+        const { imgPath, mainRenderElement, altText, className } = this;
 
-        imgElem.src = imgPath;
-        imgElem.alt = altText;
-        imgElem.className = className;
+        mainRenderElement.src = imgPath;
+        mainRenderElement.alt = altText;
+        mainRenderElement.className = className;
 
-        return imgElem;
+        return mainRenderElement;
     }
 }
 

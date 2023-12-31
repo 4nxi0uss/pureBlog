@@ -1,11 +1,14 @@
 import Img from '../Img/Img.mjs';
+import RenderElement from '../RenderElement/RenderElement.mjs';
 
-export class ListElement {
-    listEle = document.createElement('div');
+export class ListElement extends RenderElement {
     paragraphEle = document.createElement('p');
+    btnEle = document.createElement('button');
     paragraphClassName = 'Description';
+    isTextExtended = true;
 
     constructor(className = 'ListElement', img = '', description = '') {
+        super('div');
         this.className = className;
         this.img = img;
         this.description = description;
@@ -17,30 +20,56 @@ export class ListElement {
         return this;
     }
 
+    setTextToggleBtn() {
+        this.paragraphEle.classList.toggle('ListElement--Description__hidden');
+        this.isTextExtended = !this.isTextExtended;
+
+        this.toggleTextInBtn(this.isTextExtended);
+
+        return this;
+    }
+
+    toggleTextInBtn(condition = true) {
+        this.btnEle.textContent = condition ? 'show more' : 'show less';
+    }
+
+    bindSetTextToggleBtn = this.setTextToggleBtn.bind(this);
+
     render() {
         const {
             className,
             img,
             description,
-            listEle,
+            mainRenderElement,
             paragraphEle,
             paragraphClassName,
+            bindSetTextToggleBtn,
+            btnEle,
         } = this;
 
         /**main pod*/
-        listEle.className = className;
+        mainRenderElement.className = className;
 
         /**img pod*/
         const img1 = new Img(img, 'sliczne logo', 'ListElement--Img').render();
-        listEle.appendChild(img1);
+        mainRenderElement.appendChild(img1);
 
         /**description pod*/
-        paragraphEle.className = paragraphClassName;
+        paragraphEle.className = `${paragraphClassName} ${
+            paragraphClassName + '__hidden'
+        }`;
         paragraphEle.innerHTML = description;
 
-        listEle.appendChild(paragraphEle);
+        mainRenderElement.appendChild(paragraphEle);
 
-        return listEle;
+        /** button sub pod*/
+        btnEle.onclick = bindSetTextToggleBtn;
+        btnEle.className = `Button ${paragraphClassName}Button`;
+        this.toggleTextInBtn();
+
+        mainRenderElement.appendChild(btnEle);
+
+        return mainRenderElement;
     }
 }
 

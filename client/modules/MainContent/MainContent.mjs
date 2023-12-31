@@ -1,18 +1,19 @@
+import RenderElement from '../RenderElement/RenderElement.mjs';
 import List from '../List/List.mjs';
 
-export class MainContent {
+export class MainContent extends RenderElement {
     constructor() {
-        this.mainContentElement = document.createElement('div');
+        super('section');
     }
 
     render() {
-        const { mainContentElement } = this;
+        const { mainRenderElement } = this;
 
-        mainContentElement.className = 'MainContent';
+        mainRenderElement.className = 'MainContent';
 
-        new List(mainContentElement, 'List List--Wrapper').render();
+        new List(mainRenderElement, 'List List--Wrapper').render();
 
-        return mainContentElement;
+        return mainRenderElement;
     }
 }
 
