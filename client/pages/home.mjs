@@ -1,6 +1,7 @@
 import Header from '../modules/Header/Header.mjs';
 import MainContent from '../modules/MainContent/MainContent.mjs';
 import Footer from '../modules/Footer/Footer.mjs';
+import List from '../modules/List/List.mjs';
 
 class Home {
     bodyRef = document.createElement('div');
@@ -23,6 +24,8 @@ class Home {
         const header = new Header('Header');
         const mainContent = new MainContent();
         const footer = new Footer('Footer');
+
+        mainContent.appendRenderChild(new List('List List--Wrapper').render());
 
         bodyRef.appendChild(header.render());
         bodyRef.appendChild(mainContent.render());
