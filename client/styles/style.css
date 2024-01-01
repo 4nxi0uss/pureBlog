@@ -1,6 +1,11 @@
 :root {
     --header-heigh: 50px;
     --list-element-gap: 30px;
+    --main-color: #D1B38C;
+    --secondary-color: #8CCED1;
+    --third-color: #8CA3D1;
+    --forth-color: #524533;
+    --fifth-color: #333D52;
 }
 
 * {
@@ -27,7 +32,7 @@ body {
 }
 
 .Header {
-    border-block-end: 1px solid red;
+    border-block-end: 1px solid var(--forth-color);
     box-shadow: 0px 1px 20px 0px #00000017;
     max-width: 100vw;
     height: 50px;
@@ -66,7 +71,7 @@ body {
             margin-inline: 5px;
 
             &:hover {
-                color: red;
+                color: var(--forth-color);
             }
         }
     }
@@ -75,6 +80,12 @@ body {
 .MainContent {
     min-height: calc(100vh - var(--header-heigh));
     max-width: 100vw;
+
+    .MainContent--Header {
+        position: relative;
+        display: block;
+        text-align: center;
+    }
 
     .List {
         margin: 0px 100px;
@@ -88,7 +99,7 @@ body {
         }
 
         .ListElement {
-            border: 1px solid pink;
+            border: 1px solid var(--fifth-color);
             border-radius: 20px;
             height: auto;
             width: 400px;
@@ -116,7 +127,6 @@ body {
             }
 
             .ListElement--DescriptionButton {
-                color: blue;
                 left: 50%;
                 transform: translateX(-50%);
                 margin: 5px 0px;
@@ -125,15 +135,50 @@ body {
                 font-weight: 500;
 
                 &:hover {
-                    background: blue;
-                    color: white;
+                    background: var(--secondary-color);
                 }
             }
         }
     }
+
+    .Form {
+        position: relative;
+        display: block;
+        width: fit-content;
+        height: fit-content;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .Form--Input__button {
+            position: relative;
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            border: none;
+            background-color: transparent;
+            padding: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            left: 50%;
+            transform: translateX(-50%);
+
+            &:hover {
+                background-color: var(--secondary-color);
+            }
+        }
+    }
+
+    .Form--Input__text,
+    .Form--Input__password {
+        border-radius: 0;
+        border: 1px solid black;
+        right: 0;
+    }
+
 }
 
 .Footer {
     height: 100px;
-    background-color: tan;
+    background-color: var(--main-color);
 }
