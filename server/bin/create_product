@@ -1,0 +1,20 @@
+<?php
+
+use Src\Entities\Data;
+
+require_once __DIR__ . '/../src/Entities/Data.php';
+require_once __DIR__ . "/../Bootstrap/bootstrap.php";
+
+$newProductName = $argv[1];
+$newProductAge = $argv[2];
+$newProductEmail = $argv[3];
+
+$product = new Data();
+$product->setName($newProductName);
+$product->setAge($newProductAge);
+$product->setEmail($newProductEmail);
+
+$entityManager->persist($product);
+$entityManager->flush();
+
+echo "Created Product with ID " . $product->getId() . "\n";
