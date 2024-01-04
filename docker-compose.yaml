@@ -24,7 +24,7 @@ services:
       - ./mysql:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: projekt
+      MYSQL_DATABASE: project
 
   phpmyadmin:
     image: phpmyadmin
@@ -39,11 +39,11 @@ services:
       - PMA_PASSWORD=root123
 
   php:
-    image: php:8.2-fpm
+    image: php_custom_image
     restart: always
     depends_on:
       - mysql
-    working_dir: /var/www/html/
     volumes:
       - ./server:/var/www/html/
       - ./logs:/var/log/fpm-php.www.log
+      - ./server/bin:/usr/bin/env php
