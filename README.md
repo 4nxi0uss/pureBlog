@@ -5,7 +5,7 @@
 <!-- docker build -t image_name path_to_dockerfile -->
 `docker build -t php_custom_image /path/to/Docerfile`
 
-<h3>Dokcer compose</h3>
+<h3>Docker compose</h3>
 
 ```
 <!-- run -->
